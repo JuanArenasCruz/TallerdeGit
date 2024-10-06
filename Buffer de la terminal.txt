@@ -1,0 +1,439 @@
+sebas@JuanSebas001 MINGW64 ~ (master)
+$ git init TallerdeGit
+Reinitialized existing Git repository in C:/Users/sebas/TallerdeGit/.git/
+
+sebas@JuanSebas001 MINGW64 ~ (master)
+$ git config --global user.name "JuanArenasCruz"
+
+sebas@JuanSebas001 MINGW64 ~ (master)
+$ git config --global user.email "juan.arenas.cruz@correounivalle.edu.co"
+
+sebas@JuanSebas001 MINGW64 ~ (master)
+$ git config --global --list
+safe.directory=*
+user.email=juanjuan.arenas.cruz@correounivalle.edu.co
+user.name=JuanArenasCruz
+
+sebas@JuanSebas001 MINGW64 ~ (master)
+$ git checkout -b feature
+Switched to a new branch 'feature'
+
+sebas@JuanSebas001 MINGW64 ~ (feature)
+$ echo "Texto inicial" > archivo.txt
+
+sebas@JuanSebas001 MINGW64 ~ (feature)
+$ git add archivo.txt
+warning: in the working copy of 'archivo.txt', LF will be replaced by CRLF the next time Git touches it
+
+sebas@JuanSebas001 MINGW64 ~ (feature)
+$ ^C
+
+sebas@JuanSebas001 MINGW64 ~ (feature)
+$ git commit -m "Commit inicial"
+[feature (root-commit) 63f331f] Commit inicial
+ 1 file changed, 1 insertion(+)
+ create mode 100644 archivo.txt
+
+sebas@JuanSebas001 MINGW64 ~ (feature)
+$ echo "Texto agregado en feature" >> archivo.txt
+
+sebas@JuanSebas001 MINGW64 ~ (feature)
+$ git commit -am "Segundo commit en feature"
+warning: in the working copy of 'archivo.txt', LF will be replaced by CRLF the next time Git touches it
+[feature 52c9bb0] Segundo commit en feature
+ 1 file changed, 1 insertion(+)
+
+sebas@JuanSebas001 MINGW64 ~ (feature)
+$ echo "Tercer texto en feature" >> archivo.txt
+
+sebas@JuanSebas001 MINGW64 ~ (feature)
+$ git commit -am "Tercer commit en feature"
+warning: in the working copy of 'archivo.txt', LF will be replaced by CRLF the next time Git touches it
+[feature b769ec1] Tercer commit en feature
+ 1 file changed, 1 insertion(+)
+
+sebas@JuanSebas001 MINGW64 ~ (feature)
+$ git log
+commit b769ec100bf6d27183f704ad6340550dd144b30c (HEAD -> feature)
+Author: JuanArenasCruz <juanjuan.arenas.cruz@correounivalle.edu.co>
+Date:   Sat Oct 5 21:16:07 2024 -0500
+
+    Tercer commit en feature
+
+commit 52c9bb092b748c5db1deef12072256db7a0e05a9
+Author: JuanArenasCruz <juanjuan.arenas.cruz@correounivalle.edu.co>
+Date:   Sat Oct 5 21:13:34 2024 -0500
+
+    Segundo commit en feature
+
+commit 63f331fd00c4095cf4661aa31b2e89052048cc9c
+Author: JuanArenasCruz <juanjuan.arenas.cruz@correounivalle.edu.co>
+Date:   Sat Oct 5 21:11:32 2024 -0500
+
+    Commit inicial
+
+sebas@JuanSebas001 MINGW64 ~ (feature)
+$ git checkout master
+error: pathspec 'master' did not match any file(s) known to git
+
+sebas@JuanSebas001 MINGW64 ~ (feature)
+$ git checkout master
+error: pathspec 'master' did not match any file(s) known to git
+
+sebas@JuanSebas001 MINGW64 ~ (feature)
+$ git checkout master
+error: pathspec 'master' did not match any file(s) known to git
+
+sebas@JuanSebas001 MINGW64 ~ (feature)
+$ git branch
+* feature
+
+sebas@JuanSebas001 MINGW64 ~ (feature)
+$ git checkout -b master
+Switched to a new branch 'master'
+
+sebas@JuanSebas001 MINGW64 ~ (master)
+$ git checkout master
+Already on 'master'
+
+sebas@JuanSebas001 MINGW64 ~ (master)
+$ git merge feature
+Already up to date.
+
+sebas@JuanSebas001 MINGW64 ~ (master)
+$ git reset --hard HEAD~1
+HEAD is now at 52c9bb0 Segundo commit en feature
+
+sebas@JuanSebas001 MINGW64 ~ (master)
+$ git rebase feature
+Successfully rebased and updated refs/heads/master.
+
+sebas@JuanSebas001 MINGW64 ~ (master)
+$ git log
+commit b769ec100bf6d27183f704ad6340550dd144b30c (HEAD -> master, feature)
+Author: JuanArenasCruz <juanjuan.arenas.cruz@correounivalle.edu.co>
+Date:   Sat Oct 5 21:16:07 2024 -0500
+
+    Tercer commit en feature
+
+commit 52c9bb092b748c5db1deef12072256db7a0e05a9
+Author: JuanArenasCruz <juanjuan.arenas.cruz@correounivalle.edu.co>
+Date:   Sat Oct 5 21:13:34 2024 -0500
+
+    Segundo commit en feature
+
+commit 63f331fd00c4095cf4661aa31b2e89052048cc9c
+Author: JuanArenasCruz <juanjuan.arenas.cruz@correounivalle.edu.co>
+Date:   Sat Oct 5 21:11:32 2024 -0500
+
+    Commit inicial
+
+sebas@JuanSebas001 MINGW64 ~ (master)
+$ git checkout -b hotfix
+Switched to a new branch 'hotfix'
+
+sebas@JuanSebas001 MINGW64 ~ (hotfix)
+$ echo "Corrección urgente" >> archivo.txt
+
+sebas@JuanSebas001 MINGW64 ~ (hotfix)
+$ git commit -am "Hotfix"
+warning: in the working copy of 'archivo.txt', LF will be replaced by CRLF the next time Git touches it
+[hotfix 0485f46] Hotfix
+ 1 file changed, 1 insertion(+)
+
+sebas@JuanSebas001 MINGW64 ~ (hotfix)
+$ git checkout master
+Switched to branch 'master'
+
+sebas@JuanSebas001 MINGW64 ~ (master)
+$ git log hotfix
+commit 0485f469c6535ec553e8c66dce01a03199082726 (hotfix)
+Author: JuanArenasCruz <juanjuan.arenas.cruz@correounivalle.edu.co>
+Date:   Sat Oct 5 21:37:33 2024 -0500
+
+    Hotfix
+
+commit b769ec100bf6d27183f704ad6340550dd144b30c (HEAD -> master, feature)
+Author: JuanArenasCruz <juanjuan.arenas.cruz@correounivalle.edu.co>
+Date:   Sat Oct 5 21:16:07 2024 -0500
+
+    Tercer commit en feature
+
+commit 52c9bb092b748c5db1deef12072256db7a0e05a9
+Author: JuanArenasCruz <juanjuan.arenas.cruz@correounivalle.edu.co>
+Date:   Sat Oct 5 21:13:34 2024 -0500
+
+    Segundo commit en feature
+
+commit 63f331fd00c4095cf4661aa31b2e89052048cc9c
+Author: JuanArenasCruz <juanjuan.arenas.cruz@correounivalle.edu.co>
+Date:   Sat Oct 5 21:11:32 2024 -0500
+
+    Commit inicial
+
+sebas@JuanSebas001 MINGW64 ~ (master)
+$ git cherry-pick hotfix
+[master 3ae425c] Hotfix
+ Date: Sat Oct 5 21:37:33 2024 -0500
+ 1 file changed, 1 insertion(+)
+
+sebas@JuanSebas001 MINGW64 ~ (master)
+$ git reflog
+3ae425c (HEAD -> master) HEAD@{0}: cherry-pick: Hotfix
+b769ec1 (feature) HEAD@{1}: checkout: moving from hotfix to master
+0485f46 (hotfix) HEAD@{2}: commit: Hotfix
+b769ec1 (feature) HEAD@{3}: checkout: moving from master to hotfix
+b769ec1 (feature) HEAD@{4}: rebase (finish): returning to refs/heads/master
+b769ec1 (feature) HEAD@{5}: rebase (start): checkout feature
+52c9bb0 HEAD@{6}: reset: moving to HEAD~1
+b769ec1 (feature) HEAD@{7}: checkout: moving from master to master
+b769ec1 (feature) HEAD@{8}: checkout: moving from feature to master
+b769ec1 (feature) HEAD@{9}: commit: Tercer commit en feature
+52c9bb0 HEAD@{10}: commit: Segundo commit en feature
+63f331f HEAD@{11}: commit (initial): Commit inicial
+
+sebas@JuanSebas001 MINGW64 ~ (master)
+$ git checkout 0485f46
+Note: switching to '0485f46'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+HEAD is now at 0485f46 Hotfix
+
+sebas@JuanSebas001 MINGW64 ~ ((0485f46...))
+$ git checkout feature
+Previous HEAD position was 0485f46 Hotfix
+Switched to branch 'feature'
+
+sebas@JuanSebas001 MINGW64 ~ (feature)
+$ echo "Cambio en feature" > conflicto.txt
+
+sebas@JuanSebas001 MINGW64 ~ (feature)
+$ git commit -am "Cambio en feature"
+warning: could not open directory 'Configuración local/': Permission denied
+warning: could not open directory 'Cookies/': Permission denied
+warning: could not open directory 'Datos de programa/': Permission denied
+warning: could not open directory 'Documents/Mi música/': Permission denied
+warning: could not open directory 'Documents/Mis imágenes/': Permission denied
+warning: could not open directory 'Documents/Mis vídeos/': Permission denied
+warning: could not open directory 'Entorno de red/': Permission denied
+warning: could not open directory 'Impresoras/': Permission denied
+warning: could not open directory 'Menú Inicio/': Permission denied
+warning: could not open directory 'Mis documentos/': Permission denied
+warning: could not open directory 'Plantillas/': Permission denied
+warning: could not open directory 'Reciente/': Permission denied
+warning: could not open directory 'SendTo/': Permission denied
+On branch feature
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        .VirtualBox/
+        .android/
+        .bash_history
+        .emulator_console_auth_token
+        .git-for-windows-updater
+        .gitconfig
+        .gradle/
+        .lesshst
+        .ssh/
+        .vscode/
+        AppData/
+        Contacts/
+        Downloads/
+        Favorites/
+        IntelGraphicsProfiles/
+        Links/
+        Music/
+        NTUSER.DAT
+        NTUSER.DAT{a2332f18-cdbf-11ec-8680-002248483d79}.TM.blf
+        NTUSER.DAT{a2332f18-cdbf-11ec-8680-002248483d79}.TMContainer00000000000000000001.regtrans-ms
+        NTUSER.DAT{a2332f18-cdbf-11ec-8680-002248483d79}.TMContainer00000000000000000002.regtrans-ms
+        OneDrive/
+        Saved Games/
+        Searches/
+        TallerGit/
+        TallerdeGit/
+        Videos/
+        calculadora_app/
+        conflicto.txt
+        ntuser.dat.LOG1
+        ntuser.dat.LOG2
+        ntuser.ini
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+sebas@JuanSebas001 MINGW64 ~ (feature)
+$ git commit -am "Cambio en feature"
+warning: could not open directory 'Configuración local/': Permission denied
+warning: could not open directory 'Cookies/': Permission denied
+warning: could not open directory 'Datos de programa/': Permission denied
+warning: could not open directory 'Documents/Mi música/': Permission denied
+warning: could not open directory 'Documents/Mis imágenes/': Permission denied
+warning: could not open directory 'Documents/Mis vídeos/': Permission denied
+warning: could not open directory 'Entorno de red/': Permission denied
+warning: could not open directory 'Impresoras/': Permission denied
+warning: could not open directory 'Menú Inicio/': Permission denied
+warning: could not open directory 'Mis documentos/': Permission denied
+warning: could not open directory 'Plantillas/': Permission denied
+warning: could not open directory 'Reciente/': Permission denied
+warning: could not open directory 'SendTo/': Permission denied
+On branch feature
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        .VirtualBox/
+        .android/
+        .bash_history
+        .emulator_console_auth_token
+        .git-for-windows-updater
+        .gitconfig
+        .gradle/
+        .lesshst
+        .ssh/
+        .vscode/
+        AppData/
+        Contacts/
+        Downloads/
+        Favorites/
+        IntelGraphicsProfiles/
+        Links/
+        Music/
+        NTUSER.DAT
+        NTUSER.DAT{a2332f18-cdbf-11ec-8680-002248483d79}.TM.blf
+        NTUSER.DAT{a2332f18-cdbf-11ec-8680-002248483d79}.TMContainer00000000000000000001.regtrans-ms
+        NTUSER.DAT{a2332f18-cdbf-11ec-8680-002248483d79}.TMContainer00000000000000000002.regtrans-ms
+        OneDrive/
+        Saved Games/
+        Searches/
+        TallerGit/
+        TallerdeGit/
+        Videos/
+        calculadora_app/
+        conflicto.txt
+        ntuser.dat.LOG1
+        ntuser.dat.LOG2
+        ntuser.ini
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+sebas@JuanSebas001 MINGW64 ~ (feature)
+$ git add conflicto.txt
+warning: in the working copy of 'conflicto.txt', LF will be replaced by CRLF the next time Git touches it
+
+sebas@JuanSebas001 MINGW64 ~ (feature)
+$ git commit -m "Cambio en feature"
+[feature 0f6ceb0] Cambio en feature
+ 1 file changed, 1 insertion(+)
+ create mode 100644 conflicto.txt
+
+sebas@JuanSebas001 MINGW64 ~ (feature)
+$ git checkout master
+Switched to branch 'master'
+
+sebas@JuanSebas001 MINGW64 ~ (master)
+$ echo "Cambio en master" > conflicto.txt
+
+sebas@JuanSebas001 MINGW64 ~ (master)
+$ git add conflicto.txt
+warning: in the working copy of 'conflicto.txt', LF will be replaced by CRLF the next time Git touches it
+
+sebas@JuanSebas001 MINGW64 ~ (master)
+$ git commit -m "Cambio en master"
+[master d248c73] Cambio en master
+ 1 file changed, 1 insertion(+)
+ create mode 100644 conflicto.txt
+
+sebas@JuanSebas001 MINGW64 ~ (master)
+$ git merge feature
+Auto-merging conflicto.txt
+CONFLICT (add/add): Merge conflict in conflicto.txt
+Automatic merge failed; fix conflicts and then commit the result.
+
+sebas@JuanSebas001 MINGW64 ~ (master|MERGING)
+$ git status
+warning: could not open directory 'Configuración local/': Permission denied
+warning: could not open directory 'Cookies/': Permission denied
+warning: could not open directory 'Datos de programa/': Permission denied
+warning: could not open directory 'Documents/Mi música/': Permission denied
+warning: could not open directory 'Documents/Mis imágenes/': Permission denied
+warning: could not open directory 'Documents/Mis vídeos/': Permission denied
+warning: could not open directory 'Entorno de red/': Permission denied
+warning: could not open directory 'Impresoras/': Permission denied
+warning: could not open directory 'Menú Inicio/': Permission denied
+warning: could not open directory 'Mis documentos/': Permission denied
+warning: could not open directory 'Plantillas/': Permission denied
+warning: could not open directory 'Reciente/': Permission denied
+warning: could not open directory 'SendTo/': Permission denied
+On branch master
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+  (use "git merge --abort" to abort the merge)
+
+Unmerged paths:
+  (use "git add <file>..." to mark resolution)
+        both added:      conflicto.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        .VirtualBox/
+        .android/
+        .bash_history
+        .emulator_console_auth_token
+        .git-for-windows-updater
+        .gitconfig
+        .gradle/
+        .lesshst
+        .ssh/
+        .vscode/
+        AppData/
+        Contacts/
+        Downloads/
+        Favorites/
+        IntelGraphicsProfiles/
+        Links/
+        Music/
+        NTUSER.DAT
+        NTUSER.DAT{a2332f18-cdbf-11ec-8680-002248483d79}.TM.blf
+        NTUSER.DAT{a2332f18-cdbf-11ec-8680-002248483d79}.TMContainer00000000000000000001.regtrans-ms
+        NTUSER.DAT{a2332f18-cdbf-11ec-8680-002248483d79}.TMContainer00000000000000000002.regtrans-ms
+        OneDrive/
+        Saved Games/
+        Searches/
+        TallerGit/
+        TallerdeGit/
+        Videos/
+        calculadora_app/
+        ntuser.dat.LOG1
+        ntuser.dat.LOG2
+        ntuser.ini
+sebas@JuanSebas001 MINGW64 ~ (master|MERGING)
+$ vim conflicto.txt
+
+sebas@JuanSebas001 MINGW64 ~ (master|MERGING)
+$ git add conflicto.txt
+
+sebas@JuanSebas001 MINGW64 ~ (master|MERGING)
+$ git commit -m "Resuelto conflicto entre master y feature"
+[master 9c3ea7e] Resuelto conflicto entre master y feature
+
+sebas@JuanSebas001 MINGW64 ~ (master)
+$ git log --oneline
+9c3ea7e (HEAD -> master) Resuelto conflicto entre master y feature
+d248c73 Cambio en master
+0f6ceb0 (feature) Cambio en feature
+3ae425c Hotfix
+b769ec1 Tercer commit en feature
+52c9bb0 Segundo commit en feature
+63f331f Commit inicial
+
